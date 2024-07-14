@@ -11,15 +11,21 @@
   "dependencies": {
     "@clerk/nextjs": "^5.1.6",
     "@neondatabase/serverless": "^0.9.3",
+    "@types/uuid": "^10.0.0",
     "@vercel/postgres": "^0.9.0",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.31.2",
     "next": "15.0.0-rc.0",
+    "pg": "^8.12.0",
     "react": "19.0.0-rc-f994737d14-20240522",
-    "react-dom": "19.0.0-rc-f994737d14-20240522"
+    "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "svix": "^1.25.0",
+    "uuid": "^10.0.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/pg": "^8.11.6",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "drizzle-kit": "^0.22.7",
