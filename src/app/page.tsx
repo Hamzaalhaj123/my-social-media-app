@@ -4,7 +4,7 @@ import ShowUsers from "./_components/ShowUsers";
 export default function Home() {
   return (
     <>
-      <AuthManager />
+      {/* <AuthManager  /> */}
       <ShowUsers />
     </>
   );

@@ -1,5 +1,5 @@
 {
-  "id": "ec46f5ea-6a4a-497f-98ed-9c2ee49ba588",
+  "id": "24eb9c10-02b5-4e2d-b73c-20372cac6adc",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -10,20 +10,19 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "'0f75db18-cef5-47f3-b853-03f052846ed8'"
+          "notNull": true
         },
         "post_id": {
           "name": "post_id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
         "user_id": {
           "name": "user_id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -44,8 +43,7 @@
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -86,20 +84,19 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "'4437d314-0680-4054-adef-1e29e206cf03'"
+          "notNull": true
         },
         "follower_id": {
           "name": "follower_id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
         "following_id": {
           "name": "following_id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -178,26 +175,25 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "'2b815493-f9fc-4eb6-9635-11fc03c224d1'"
+          "notNull": true
         },
         "user_id": {
           "name": "user_id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
         "post_id": {
           "name": "post_id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
         "comment_id": {
           "name": "comment_id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
@@ -288,14 +284,13 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "'02ddd44c-4094-4046-9569-356bb3b699d1'"
+          "notNull": true
         },
         "user_id": {
           "name": "user_id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -322,8 +317,7 @@
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -351,14 +345,13 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "serial",
           "primaryKey": true,
-          "notNull": true,
-          "default": "'62b5f147-e4ca-494d-9dc8-69adebacecf4'"
+          "notNull": true
         },
         "user_id": {
           "name": "user_id",
-          "type": "text",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -407,7 +400,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "serial",
           "primaryKey": true,
           "notNull": true
         },
@@ -417,39 +410,9 @@
           "primaryKey": false,
           "notNull": true
         },
-        "surname": {
-          "name": "surname",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
         "description": {
           "name": "description",
           "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "city": {
-          "name": "city",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "school": {
-          "name": "school",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "work": {
-          "name": "work",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "website": {
-          "name": "website",
-          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false
         },

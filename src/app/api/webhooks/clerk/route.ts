@@ -54,42 +54,11 @@ export async function POST(req: Request) {
   const eventType = evt.type;
 
   if (eventType === "user.created") {
-    try {
-      await db.insert(users).values({
-        id: evt.data.id,
-        name: evt.data.first_name as string,
-        surname: evt.data.last_name as string,
-        image: evt.data.image_url || "NoImage.png",
-      });
-
-      return new Response("User created", { status: 200 });
-    } catch (err) {
-      console.error("Error creating user", err);
-      return new Response("Error occurred", {
-        status: 500,
-      });
-    }
+    db.insert(users).values({
+      image: evt.data.image_url as string,
+      name: evt.data.username as string,
+    });
   }
-
-  if (evt.type === "user.updated") {
-    try {
-      await db
-        .update(users)
-        .set({
-          id: evt.data.id,
-          name: evt.data.first_name as string,
-          surname: evt.data.last_name as string,
-          image: evt.data.image_url || "NoImage.png",
-        })
-        .where(eq(users.id, evt.data.id));
-    } catch (err) {
-      console.error("Error updating user", err);
-      return new Response("Error occurred", {
-        status: 500,
-      });
-    }
-  }
-
   // console.log("eventType", eventType);
   // console.log("payload", payload.data.id);
   // console.log("id", evt.data.id);
