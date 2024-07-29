@@ -4,7 +4,7 @@ import Image from "next/image";
 
 type PostProps = typeof posts.$inferSelect;
 
-function Post({ createdAt, description, id, image, userId }: PostProps) {
+function Post({ createdAt, content, id, image, userId }: PostProps) {
   // { username }: { username: string }
   return <div>post</div>;
 }

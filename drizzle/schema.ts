@@ -7,18 +7,30 @@ import {
   boolean,
   uniqueIndex,
   integer,
+  date,
 } from "drizzle-orm/pg-core";
 
 // Define the tables
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }).notNull(),
+  password: varchar("password", { length: 255 }).notNull(),
   description: text("description"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
   image: varchar("image", { length: 255 }),
 });
-
+export const sessionTable = pgTable("session", {
+  id: text("id").primaryKey(),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => users.id),
+  expiresAt: timestamp("expires_at", {
+    withTimezone: true,
+    mode: "date",
+  }).notNull(),
+});
 export const posts = pgTable("posts", {
   id: serial("id").primaryKey(),
   userId: integer("user_id")
@@ -66,6 +78,7 @@ export const follows = pgTable(
 
 export const likes = pgTable(
   "likes",
+
   {
     id: serial("id").primaryKey(),
     userId: integer("user_id")
