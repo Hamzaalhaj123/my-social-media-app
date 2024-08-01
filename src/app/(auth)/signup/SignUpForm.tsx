@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
-import { signUp } from "./actions";
 import {
   Form,
   FormControl,
@@ -82,8 +81,10 @@ export default function SignUpForm() {
           )}
         />
         <Button
+          variant={"default"}
+          colour={"secondary"}
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-700 text-white"
+          className="w-full"
         >
           Create account
         </Button>

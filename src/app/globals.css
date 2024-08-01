@@ -3,10 +3,151 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply border-border;
+  @media (prefers-color-scheme: light) {
+    :root {
+      /* Primary */
+      --primary-lighter: 151 188 230;
+      --primary: 37 92 153;
+      --primary-darker: 29 75 122;
+      /* Secondary */
+      --secondary-lighter: 229 204 255;
+      --secondary: 178 102 255;
+      --secondary-darker: 128 0 128;
+
+      /* Success */
+      --success-lighter: 122 255 224;
+      --success: 0 178 137;
+      --success-darker: 0 102 0;
+
+      /* Error */
+      --error-lighter: 254 173 173;
+      --error: 255 51 51;
+      --error-darker: 204 0 0;
+
+      /* Warning */
+      --warning-lighter: 251 216 157;
+      --warning: 245 158 11;
+      --warning-darker: 153 102 0;
+
+      /* Foreground */
+      --foreground-muted: 30 30 30;
+      --foreground: 15 15 15;
+
+      /* Background */
+      --background-lighter: 245 245 245;
+      --background: 229 229 229;
+      --background-darker: 200 200 200;
+    }
   }
-  body {
-    @apply bg-background text-foreground;
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* Primary */
+      --primary-lighter: 151 188 230;
+      --primary: 37 92 153;
+      --primary-darker: 29 75 122;
+
+      /* Secondary */
+      --secondary-lighter: 128 0 128;
+      --secondary: 102 0 153;
+      --secondary-darker: 76 0 102;
+
+      /* Success */
+      --success-lighter: 122 255 224;
+      --success: 0 178 137;
+      --success-darker: 0 102 0;
+
+      /* Error */
+      --error-lighter: 254 173 173;
+      --error: 255 51 51;
+      --error-darker: 204 0 0;
+
+      /* Warning */
+      --warning-lighter: 251 216 157;
+      --warning: 245 158 11;
+      --warning-darker: 153 102 0;
+
+      --background-lighter: 15 15 15;
+      --background: 10 10 10;
+      --background-darker: 5 5 5;
+
+      --foreground-muted: 179 179 179;
+      --foreground: 255 255 255;
+    }
+  }
+
+  .dark {
+    /* Primary */
+    --primary-lighter: 151 188 230;
+    --primary: 37 92 153;
+    --primary-darker: 29 75 122;
+
+    /* Secondary */
+    --secondary-lighter: 128 0 128;
+    --secondary: 102 0 153;
+    --secondary-darker: 76 0 102;
+
+    /* Success */
+    --success-lighter: 122 255 224;
+    --success: 0 178 137;
+    --success-darker: 0 102 0;
+
+    /* Error */
+    --error-lighter: 254 173 173;
+    --error: 255 51 51;
+    --error-darker: 204 0 0;
+
+    /* Warning */
+    --warning-lighter: 251 216 157;
+    --warning: 245 158 11;
+    --warning-darker: 153 102 0;
+
+    --background-lighter: 15 15 15;
+    --background: 10 10 10;
+    --background-darker: 5 5 5;
+
+    --foreground-muted: 179 179 179;
+    --foreground: 255 255 255;
+  }
+
+  .light {
+    /* Primary */
+    --primary-lighter: 151 188 230;
+    --primary: 37 92 153;
+    --primary-darker: 29 75 122;
+    /* Secondary */
+    --secondary-lighter: 229 204 255;
+    --secondary: 178 102 255;
+    --secondary-darker: 128 0 128;
+
+    /* Success */
+    --success-lighter: 122 255 224;
+    --success: 0 178 137;
+    --success-darker: 0 102 0;
+
+    /* Error */
+    --error-lighter: 254 173 173;
+    --error: 255 51 51;
+    --error-darker: 204 0 0;
+
+    /* Warning */
+    --warning-lighter: 251 216 157;
+    --warning: 245 158 11;
+    --warning-darker: 153 102 0;
+
+    /* Foreground */
+    --foreground-muted: 30 30 30;
+    --foreground: 15 15 15;
+
+    /* Background */
+    --background-lighter: 245 245 245;
+    --background: 229 229 229;
+    --background-darker: 200 200 200;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

@@ -5,17 +5,26 @@ import form from "../../../public/form.jpg";
 import { useForm } from "react-hook-form";
 import SignUpForm from "@/app/(auth)/signup/SignUpForm";
 import Link from "next/link";
+import { Button } from "@/app/_components/ui/button";
+import useTheme from "@/app/_hooks/shared/useTheme";
+import { MoonIcon, SunIcon } from "lucide-react";
 
 export default function SignUpPage() {
+  const [theme, handleSwitch] = useTheme();
+
   return (
-    <main className="flex h-screen items-center justify-center p-5">
+    <main className="flex h-screen items-center justify-center p-5 bg-background">
+      <Button onClick={handleSwitch} colour={"secondary"} variant={"outline"}>
+        {theme === "light" ? <MoonIcon /> : <SunIcon />}
+      </Button>
       <div className="flex h-full max-h-[40rem] w-full max-w-[64rem] overflow-hidden rounded-2xl  shadow-2xl">
         <div className="w-full space-y-10 overflow-y-auto p-10 md:w-1/2">
           <div className="space-y-1 text-center">
             <h1 className="text-3xl font-bold">
-              Welcome to <span className="text-blue-500">FriendHub</span>
+              <span className="text-primary"> Welcome to Friend</span>
+              <span className="text-secondary">Hub</span>
             </h1>
-            <p>
+            <p className="text-foreground-muted">
               A place where even <span className="italic">you</span> can find a
               caring friend!
             </p>

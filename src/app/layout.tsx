@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
-import Navbar from "./_components/NavBar";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-});
+import { CookiesProvider } from "next-client-cookies/server";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={geistMono.className}>{children}</body>
+      <body>
+        <CookiesProvider>{children}</CookiesProvider>
+      </body>
     </html>
   );
 }
