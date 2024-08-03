@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Button } from "@/app/_components/ui/button";
 import useTheme from "@/app/_hooks/shared/useTheme";
 import { MoonIcon, SunIcon } from "lucide-react";
+import LoginForm from "@/app/(auth)/login/LoginForm";
 
 export default function SignUpPage() {
   const [theme, handleSwitch] = useTheme();
@@ -29,9 +30,12 @@ export default function SignUpPage() {
             </p>
           </div>
           <div className="space-y-5">
-            <SignUpForm />
-            <Link href="/login" className="block text-center hover:underline">
-              Already have an account? Log in
+            <LoginForm />
+            <Link
+              href="/signup"
+              className="block text-center hover:underline text-foreground"
+            >
+              Don't have an account? Sign up
             </Link>
           </div>
         </div>

@@ -12,10 +12,10 @@ export async function login(
   credentials: LoginValues
 ): Promise<{ error: string }> {
   try {
-    const { username, email, password } = loginSchema.parse(credentials);
+    const { usernameOrEmail, password } = loginSchema.parse(credentials);
     const existingUser = await db.query.users.findFirst({
       where: (users, { or, eq }) =>
-        or(eq(users.name, username), eq(users.email, email)),
+        or(eq(users.name, usernameOrEmail), eq(users.email, usernameOrEmail)),
     });
 
     if (!existingUser || !existingUser.password || !existingUser.email) {
@@ -40,8 +40,8 @@ export async function login(
   } catch (error) {
     if (isRedirectError(error)) throw error;
     console.error(error);
-    return {
-      error: "Something went wrong with the login process please try again",
-    };
+    throw new Error(
+      "Something went wrong with the login process please try again"
+    );
   }
 }

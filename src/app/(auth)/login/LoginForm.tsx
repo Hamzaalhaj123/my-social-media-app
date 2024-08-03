@@ -12,29 +12,34 @@ import {
   FormMessage,
 } from "@/app/_components/ui/form";
 import { Input } from "@/app/_components/ui/input";
-import { SignUpValues, signUpSchema } from "@/validation";
+import {
+  LoginValues,
+  SignUpValues,
+  loginSchema,
+  signUpSchema,
+} from "@/validation";
 import { Button } from "@/app/_components/ui/button";
 import { PasswordInput } from "@/app/_components/ui/passwordInput";
-import { signUp } from "@/app/(auth)/signup/actions";
+import { login } from "@/app/(auth)/login/actions";
 
-export default function SignUpForm() {
+export default function LoginForm() {
   const [error, setError] = useState<string>();
 
-  const form = useForm<SignUpValues>({
-    resolver: zodResolver(signUpSchema),
+  const form = useForm<LoginValues>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
-      username: "",
-      email: "",
+      usernameOrEmail: "",
       password: "",
     },
   });
 
   const [isLoading, startTransition] = useTransition();
-  async function onSubmit(values: SignUpValues) {
+  async function onSubmit(values: LoginValues) {
     setError(undefined);
     startTransition(async () => {
-      const { error } = await signUp(values);
+      const { error } = await login(values);
       console.log(values);
+      console.log(error);
     });
   }
 
@@ -44,25 +49,12 @@ export default function SignUpForm() {
         {error && <p className="text-center ">{error}</p>}
         <FormField
           control={form.control}
-          name="username"
+          name="usernameOrEmail"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Username" type="text" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" type="email" {...field} />
+                <Input placeholder="Username Or Email" type="text" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -92,7 +84,7 @@ export default function SignUpForm() {
           className="w-full"
           disabled={isLoading}
         >
-          Create account
+          Log In
         </Button>
       </form>
     </Form>

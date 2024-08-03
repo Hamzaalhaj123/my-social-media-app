@@ -52,8 +52,8 @@ export async function signUp(
   } catch (error) {
     if (isRedirectError(error)) throw error;
     console.error(error);
-    return {
-      error: "Something went wrong with the signup process please try again",
-    };
+    throw new Error(
+      "Something went wrong with the signup process please try again"
+    );
   }
 }
