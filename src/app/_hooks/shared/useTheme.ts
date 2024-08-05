@@ -13,18 +13,17 @@ export default function useTheme() {
   const [theme, setTheme] = useState<Theme>(
     (cookies.get("theme") || prefferedTheme) as Theme
   );
-  const handleSwitch = () => {
-    if (theme === "light") {
-      document.documentElement.classList.add("dark");
-      document.documentElement.classList.remove("light");
-      cookies.set("theme", "dark");
-      setTheme("dark");
-    } else {
-      document.documentElement.classList.add("light");
-      document.documentElement.classList.remove("dark");
-      cookies.set("theme", "light");
-      setTheme("light");
+  const handleSwitch = (newTheme: Theme) => {
+    if (theme) {
+      document.documentElement.classList.remove(theme);
+      cookies.remove("theme");
     }
+    if (newTheme) {
+      document.documentElement.classList.add(newTheme);
+      cookies.set("theme", newTheme);
+    }
+
+    setTheme(newTheme);
   };
   return [theme, handleSwitch] as const;
 }

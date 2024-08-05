@@ -30,13 +30,13 @@
       --warning-darker: 153 102 0;
 
       /* Foreground */
-      --foreground-muted: 30 30 30;
-      --foreground: 15 15 15;
+      --foreground: 0 0 0;
+      --foreground-muted: 85 85 85;
 
       /* Background */
       --background-lighter: 245 245 245;
-      --background: 229 229 229;
-      --background-darker: 200 200 200;
+      --background: 255 255 255;
+      --background-darker: 229 229 229;
     }
   }
 
@@ -67,11 +67,11 @@
       --warning: 245 158 11;
       --warning-darker: 153 102 0;
 
-      --background-lighter: 15 15 15;
-      --background: 10 10 10;
-      --background-darker: 5 5 5;
+      --background-lighter: 35 35 35;
+      --background: 18 18 18;
+      --background-darker: 0 0 0;
 
-      --foreground-muted: 179 179 179;
+      --foreground-muted: 170 170 170;
       --foreground: 255 255 255;
     }
   }
@@ -102,14 +102,13 @@
     --warning: 245 158 11;
     --warning-darker: 153 102 0;
 
-    --background-lighter: 15 15 15;
-    --background: 10 10 10;
-    --background-darker: 5 5 5;
+    --background-lighter: 35 35 35;
+    --background: 18 18 18;
+    --background-darker: 0 0 0;
 
-    --foreground-muted: 179 179 179;
+    --foreground-muted: 170 170 170;
     --foreground: 255 255 255;
   }
-
   .light {
     /* Primary */
     --primary-lighter: 151 188 230;
@@ -136,13 +135,13 @@
     --warning-darker: 153 102 0;
 
     /* Foreground */
-    --foreground-muted: 30 30 30;
-    --foreground: 15 15 15;
+    --foreground: 0 0 0;
+    --foreground-muted: 85 85 85;
 
     /* Background */
     --background-lighter: 245 245 245;
-    --background: 229 229 229;
-    --background-darker: 200 200 200;
+    --background: 255 255 255;
+    --background-darker: 229 229 229;
   }
 }
 
@@ -150,4 +149,10 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: all 0s 5000s;
 }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { CookiesProvider } from "next-client-cookies/server";
+import { cookies } from "next/headers";
+import { Theme } from "@/app/types/theme";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,6 +15,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = cookies().get("theme")?.value as Theme;
+
   return (
     <html lang="en">
       <body>
