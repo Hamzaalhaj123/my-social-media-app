@@ -8,15 +8,12 @@ import { Button } from "@/app/_components/ui/button";
 import useTheme from "@/app/_hooks/shared/useTheme";
 import { MoonIcon, SunIcon } from "lucide-react";
 import LoginForm from "@/app/(auth)/login/LoginForm";
+import ThemeSwitcher from "@/app/_components/NavBar/ThemeSwitcher";
 
 export default function SignUpPage() {
-  const [theme, handleSwitch] = useTheme();
-
   return (
     <main className="flex h-screen items-center justify-center p-5 bg-background">
-      <Button onClick={handleSwitch} colour={"secondary"} variant={"outline"}>
-        {theme === "light" ? <MoonIcon /> : <SunIcon />}
-      </Button>
+      <ThemeSwitcher />
       <div className="flex h-full max-h-[40rem] w-full max-w-[64rem] overflow-hidden rounded-2xl  shadow-2xl">
         <div className="w-full space-y-10 overflow-y-auto p-10 md:w-1/2">
           <div className="space-y-1 text-center">
