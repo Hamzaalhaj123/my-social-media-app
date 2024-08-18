@@ -21,3 +21,9 @@ export const loginSchema = z.object({
 });
 
 export type LoginValues = z.infer<typeof loginSchema>;
+
+export const createPostSchema = z.object({
+  content: requiredInput.min(8, "Content is required"),
+});
+
+export type postValues = z.infer<typeof createPostSchema>;
