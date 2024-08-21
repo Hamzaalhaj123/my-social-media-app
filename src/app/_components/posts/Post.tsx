@@ -11,6 +11,7 @@ import profile from "../../../public/profile.png";
 import { postValues } from "@/validation";
 import { uploadPost } from "./actions";
 import PostUploader from "./PostUploader";
+import CommentFeed from "../comments/CommentFeed";
 
 type PostProps = typeof posts.$inferSelect & {
   username: string;
@@ -43,17 +44,7 @@ function Post({
         <MessageSquare />
         <Share2 />
       </div>
-      <Textarea />
-      <Button>Submit</Button>
-      <div>
-        <div>
-          <div className="flex items-center space-x-2 ">
-            <Image src={profile} alt="profile" className="size-7" />
-            <h1>Mohammed Taky</h1>
-          </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        </div>
-      </div>
+      <CommentFeed userId={userId} postId={id} />
     </>
   );
 }

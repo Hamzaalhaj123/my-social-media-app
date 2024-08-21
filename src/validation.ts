@@ -27,3 +27,9 @@ export const createPostSchema = z.object({
 });
 
 export type postValues = z.infer<typeof createPostSchema>;
+
+export const createCommentSchema = z.object({
+  content: requiredInput.min(2, "Content is required"),
+  postId: z.number(),
+});
+export type commentValues = z.infer<typeof createCommentSchema>;
