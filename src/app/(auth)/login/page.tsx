@@ -11,6 +11,7 @@ import LoginForm from "@/app/(auth)/login/LoginForm";
 import ThemeSwitcher from "@/app/_components/NavBar/ThemeSwitcher";
 
 export default function SignUpPage() {
+  
   return (
     <main className="flex h-screen items-center justify-center p-5 bg-background">
       <ThemeSwitcher />

@@ -3,4 +3,9 @@ export type CommentFeedProps = {
   postId: number;
 };
 
-export type Comment = { userId: number; comment: string; createdAt: Date };
+export type Comment = {
+  userId: number;
+  comment: string;
+  createdAt: Date;
+  name: string;
+};

@@ -5,9 +5,9 @@ import form from "../../../public/form.jpg";
 import SignUpForm from "@/app/(auth)/signup/SignUpForm";
 import Link from "next/link";
 import ThemeSwitcher from "@/app/_components/NavBar/ThemeSwitcher";
+import { useSession } from "@/app/(main)/SessionProvidor";
 
 export default function SignUpPage() {
-  
   return (
     <main className="flex h-screen items-center justify-center p-5 bg-background-darker">
       <ThemeSwitcher />

@@ -1,22 +1,9 @@
-import { posts } from "../../../../drizzle/schema";
-
-import { Button } from "../../_components/ui/button";
-import { Textarea } from "../../_components/ui/textarea";
-
-import form from "../../../public/form.jpg";
 import Image from "next/image";
-import { MessageSquare, Share2, ThumbsUp, Upload } from "lucide-react";
-
 import profile from "../../../public/profile.png";
-import { postValues } from "@/validation";
-import { uploadPost } from "./actions";
-import PostUploader from "./PostUploader";
+import { PostProps } from "./postTypes";
 import CommentFeed from "../comments/CommentFeed";
-
-type PostProps = typeof posts.$inferSelect & {
-  username: string;
-  UserImage: string;
-};
+import PostContent from "./PostContent"; // Import the client component
+import { MessageSquareIcon, Share2Icon, ThumbsUpIcon } from "lucide-react";
 
 function Post({
   createdAt,
@@ -25,26 +12,28 @@ function Post({
   image,
   userId,
   updatedAt,
-  username,
-  UserImage,
+  name,
 }: PostProps) {
+  const characterLimit = 150; // Set your character limit for the post content here
+
   return (
     <>
-      <div>
-        <PostUploader />
-        <div className="flex space-x-2 items-center">
-          <Image src={profile} alt="home" className="size-7" />
-          <h1> {username}</h1>
+      <div className="rounded shadow-md mb-4 p-4 bg-white">
+        <div>
+          <div className="flex space-x-2 items-center">
+            <Image src={profile} alt="home" className="size-7" />
+            <h1 className="font-bold">{name}</h1>
+          </div>
+         
+          <PostContent content={content} characterLimit={characterLimit} />
         </div>
-        <p>{content}</p>
+        <div className="flex my-4 space-x-4">
+          <ThumbsUpIcon />
+          <MessageSquareIcon />
+          <Share2Icon />
+        </div>
+        <CommentFeed userId={userId} postId={id} />
       </div>
-      {/* <Image src={form} alt="form" /> Add the Image upload feature later */}
-      <div className="flex my-4 space-x-4">
-        <ThumbsUp />
-        <MessageSquare />
-        <Share2 />
-      </div>
-      <CommentFeed userId={userId} postId={id} />
     </>
   );
 }
