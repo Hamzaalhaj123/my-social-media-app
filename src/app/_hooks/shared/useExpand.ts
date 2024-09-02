@@ -1,10 +1,11 @@
-"use client";
-
 import { useState } from "react";
 
-export default function useExpand(characterLimit: number) {
-  const [isExpanded, setIsExpanded] = useState(false);
+export function useExpand(initialIsExpanded = false) {
+  const [isExpanded, setIsExpanded] = useState(initialIsExpanded);
+
   const toggleReadMore = () => {
-    setIsExpanded(!isExpanded);
+    setIsExpanded((prev) => !prev);
   };
+
+  return [isExpanded, toggleReadMore] as const;
 }

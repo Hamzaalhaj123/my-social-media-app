@@ -1,5 +1,6 @@
 "use client"; // This makes the component a client component
 
+import { useExpand } from "@/app/_hooks/shared/useExpand";
 import React, { useState } from "react";
 
 function CommentContent({
@@ -9,11 +10,7 @@ function CommentContent({
   comment: string;
   characterLimit: number;
 }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const toggleReadMore = () => {
-    setIsExpanded(!isExpanded);
-  };
+  const [isExpanded, toggleReadMore] = useExpand();
 
   return (
     <div>
