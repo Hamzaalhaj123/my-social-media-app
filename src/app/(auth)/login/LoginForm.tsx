@@ -18,7 +18,7 @@ import {
   loginSchema,
   signUpSchema,
 } from "@/validation";
-import { Button } from "@/app/_components/ui/button";
+import { Button } from "@/app/_components/ui/Button";
 import { PasswordInput } from "@/app/_components/ui/passwordInput";
 import { login } from "@/app/(auth)/login/actions";
 

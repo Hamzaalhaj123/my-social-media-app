@@ -1,7 +1,7 @@
-import SessionProvidor from "@/app/(main)/SessionProvidor";
+import SessionProvider from "@/app/(main)/SessionProvider";
 import { validateRequest } from "@/auth";
 import { redirect } from "next/navigation";
-import Navbar from "./Navbar";
+import Navbar from "../_components/NavBar/NavBar";
 
 export default async function MainLayout({
   children,
@@ -12,11 +12,13 @@ export default async function MainLayout({
   if (!session.user) redirect("/login");
 
   return (
-    <SessionProvidor value={session}>
-      <div className="flex flex-col min-h-screen">
+    <SessionProvider value={session}>
+      <div className="flex flex-col min-h-screen bg-background">
         <Navbar />
-        <div className=" mx-auto max-w-7xl p-5">{children}</div>
+        <div className=" mx-auto max-w-7xl p-5 bg-background-lighter">
+          {children}
+        </div>
       </div>
-    </SessionProvidor>
+    </SessionProvider>
   );
 }

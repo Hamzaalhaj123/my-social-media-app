@@ -18,7 +18,7 @@ export default function RootLayout({
   const theme = cookies().get("theme")?.value as Theme;
 
   return (
-    <html lang="en">
+    <html lang="en" className={theme ?? ""}>
       <body>
         <CookiesProvider>{children}</CookiesProvider>
       </body>

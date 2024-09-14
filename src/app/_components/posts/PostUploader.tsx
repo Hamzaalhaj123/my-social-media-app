@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
-import { uploadPost } from "./actions";
 import { postValues } from "@/validation";
-import { Form, FormField } from "../ui/form";
+import { useTransition } from "react";
 import { useForm } from "react-hook-form";
+import { Form, FormField } from "../ui/form";
 import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
+import { uploadPost } from "./actions";
+import { Button } from "../ui/Button";
 
 export default function PostUploader() {
   const form = useForm<postValues>();

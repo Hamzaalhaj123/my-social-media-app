@@ -13,7 +13,7 @@ import {
 } from "@/app/_components/ui/form";
 import { Input } from "@/app/_components/ui/input";
 import { SignUpValues, signUpSchema } from "@/validation";
-import { Button } from "@/app/_components/ui/button";
+import { Button } from "@/app/_components/ui/Button";
 import { PasswordInput } from "@/app/_components/ui/passwordInput";
 import { signUp } from "@/app/(auth)/signup/actions";
 

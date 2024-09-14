@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
+import { useTransition } from "react";
 // import { uploadComment } from "./actions";
-import { commentValues, postValues } from "@/validation";
-import { Form, FormField } from "../ui/form";
+import { commentValues } from "@/validation";
 import { useForm } from "react-hook-form";
+import { Form, FormField } from "../ui/form";
 import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
+
 import { uploadComment } from "./actions";
+import { Button } from "../ui/Button";
 
 export default function CommentUploader({ postId }: { postId: number }) {
   const form = useForm<commentValues>();

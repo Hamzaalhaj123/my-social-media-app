@@ -6,33 +6,26 @@ import postgres from "postgres";
 import * as schema from "../../drizzle/schema";
 
 // Fix for "sorry, too many clients already"
-declare global {
-  // eslint-disable-next-line no-var -- only var works here
-  var db: PostgresJsDatabase<typeof schema> | undefined;
-}
-
 if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL must be a Neon postgres connection string");
+  throw new Error("DATABASE_URL must exist");
 }
 
-// for production //! NOTE PLEASE DON'T FORGET TO CHANGE THE IMPORT OF THE DRIZZLE FORM POSTEGRES JS TO NEON.. UN COMMENT THE NEON IMPORT
-//const sql = neon(process.env.DATABASE_URL);
-// export const db = drizzle(sql, {
-//   schema,
+// Singleton function to ensure only one db instance is created
+function singleton<Value>(name: string, value: () => Value): Value {
+  const globalAny: any = global;
+  globalAny.__singletons = globalAny.__singletons || {};
 
-//for dev
-// const sql = postgres(process.env.DATABASE_URL as string);
-// export const db = drizzle(sql);
+  if (!globalAny.__singletons[name]) {
+    globalAny.__singletons[name] = value();
+  }
 
-let db: PostgresJsDatabase<typeof schema>;
-
-if (process.env.NODE_ENV === "production") {
-  db = drizzle(postgres(process.env.DATABASE_URL), { schema });
-} else {
-  if (!global.db)
-    global.db = drizzle(postgres(process.env.DATABASE_URL), { schema });
-
-  db = global.db;
+  return globalAny.__singletons[name];
 }
+
+// Function to create the database connection and apply migrations if needed
+function createDatabaseConnection() {
+  return drizzle(postgres(process.env.DATABASE_URL as string), { schema });
+}
+const db = singleton("db", createDatabaseConnection);
 
 export { db };

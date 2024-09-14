@@ -4,98 +4,31 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const createShape = (base: string) => ({
-  default: base,
-  circle: "p-3.5 rounded-full",
-  pill: `${base} rounded-full`,
-});
-
-const SHAPE = createShape("px-4 py-2");
-
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
-      colour: {
-        primary: "bg-primary text-foreground hover:bg-primary/95",
-        secondary: "bg-secondary text-foreground hover:bg-secondary/95",
-        success: " bg-success text-foreground hover:bg-success/95",
-        error: "bg-error text-foreground hover:bg-error/95",
-        warning: "bg-warning text-foreground hover:bg-warning/95",
-      },
       variant: {
-        default: "shadow-md",
-        smooth: "",
-        outline: "bg-transparent border border-current ",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
       },
-      shape: SHAPE,
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
+      },
     },
-    compoundVariants: [
-      {
-        colour: "primary",
-        variant: "smooth",
-        className:
-          "bg-primary-lighter text-primary hover:bg-primary-lighter/95",
-      },
-      {
-        colour: "secondary",
-        variant: "smooth",
-        className:
-          "bg-secondary-lighter text-secondary hover:bg-secondary-lighter/95",
-      },
-      {
-        colour: "success",
-        variant: "smooth",
-        className:
-          "bg-success-lighter text-success hover:bg-success-lighter/95",
-      },
-      {
-        colour: "error",
-        variant: "smooth",
-        className: "bg-error-lighter text-error hover:bg-error-lighter/95",
-      },
-      {
-        colour: "warning",
-        variant: "smooth",
-        className:
-          "bg-warning-lighter text-warning hover:bg-warning-lighter/95",
-      },
-      //** outline BUTTON */
-      {
-        colour: "primary",
-        variant: "outline",
-        className:
-          "text-primary hover:bg-primary-lighter/40 active:bg-primary-lighter/75",
-      },
-      {
-        colour: "secondary",
-        variant: "outline",
-        className:
-          "text-secondary hover:bg-secondary-lighter/40 active:bg-secondary-lighter/75",
-      },
-      {
-        colour: "success",
-        variant: "outline",
-        className:
-          " text-success hover:bg-success-lighter/40 active:bg-success-lighter/75",
-      },
-      {
-        colour: "error",
-        variant: "outline",
-        className:
-          "text-error hover:bg-error-lighter/40 active:bg-error-lighter/75",
-      },
-      {
-        colour: "warning",
-        variant: "outline",
-        className:
-          "text-warning hover:bg-warning-lighter/40 active:bg-warning-lighter/75",
-      },
-    ],
     defaultVariants: {
-      colour: "primary",
       variant: "default",
-      shape: "default",
+      size: "default",
     },
   }
 );
@@ -107,11 +40,11 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, asChild = false, colour, variant, shape, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(buttonVariants({ className, colour, variant, shape }))}
+        className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       />

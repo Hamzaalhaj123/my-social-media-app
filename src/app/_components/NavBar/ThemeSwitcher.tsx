@@ -1,14 +1,13 @@
 "use client";
 
-// import { Button } from "@/app/_components/shared/Button";
-import { Button } from "../../_components/ui/button";
+import useTheme from "@/app/_hooks/shared/useTheme";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../../_components/ui/dropdown-menu";
-import useTheme from "@/app/_hooks/shared/useTheme";
+} from "../ui/Dropdown";
+import { Button } from "../ui/Button";
 
 export default function ThemeSwitcher() {
   const [theme, handleSwitch] = useTheme();

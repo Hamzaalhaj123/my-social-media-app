@@ -4,14 +4,12 @@ import React from "react";
 import form from "../../../public/form.jpg";
 import SignUpForm from "@/app/(auth)/signup/SignUpForm";
 import Link from "next/link";
-import { Button } from "@/app/_components/ui/button";
 import useTheme from "@/app/_hooks/shared/useTheme";
 import { MoonIcon, SunIcon } from "lucide-react";
 import LoginForm from "@/app/(auth)/login/LoginForm";
 import ThemeSwitcher from "@/app/_components/NavBar/ThemeSwitcher";
 
 export default function SignUpPage() {
-  
   return (
     <main className="flex h-screen items-center justify-center p-5 bg-background">
       <ThemeSwitcher />
